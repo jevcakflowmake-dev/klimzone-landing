@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KlimZone – Klimatizace, montáž a servis | klimzone.cz</title>
+  <meta name="description" content="KlimZone – profesionální prodej, montáž a servis klimatizací na klíč. Rychle, spolehlivě, bez starostí. Poptejte nezávazně.">
+  <meta property="og:title" content="KlimZone – Klimatizace na klíč">
+  <meta property="og:description" content="Prodej, montáž a servis klimatizací. Rychlá instalace do 48 h, záruční i pozáruční servis.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://klimzone.cz">
+  <meta property="og:image" content="https://klimzone.cz/og.jpg">
+  <meta name="theme-color" content="#0A0A09">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: #4A2510 #0A0A09;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0A0A09; }
+    ::-webkit-scrollbar-thumb { background: #3D1C08; border-radius: 0; }
+
+    :root {
+      --bg:       #0A0A09;
+      --bg2:      #0F0E0C;
+      --bg3:      #151311;
+      --bg4:      #1C1916;
+      --br:       #3D1C08;   /* dark brown */
+      --br-m:     #5A2A0E;   /* mid brown – borders/accents */
+      --br-l:     #7A3A14;   /* lighter brown – hover */
+      --btn:      #7B0E0E;   /* dark red – buttons */
+      --btn-h:    #9A1212;   /* darker crimson – button hover */
+      --text:     #DDD3C6;   /* warm off-white */
+      --muted:    #857B72;
+      --faint:    #464039;
+      --line:     rgba(90,42,14,.4);
+      --line-s:   rgba(221,211,198,.065);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    h1,h2,h3,h4 {
+      font-family: 'Barlow', sans-serif;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--br-l);
+      margin-bottom: .85rem;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 22px;
+      height: 2px;
+      background: var(--br-m);
+      flex-shrink: 0;
+    }
+
+    .sec-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.9rem, 3vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -.01em;
+      color: var(--text);
+      margin-bottom: .85rem;
+      text-transform: uppercase;
+    }
+
+    .sec-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.7;
+      max-width: 500px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── LAYOUT ── */
+    .wrap { width:100%; max-width:1160px; margin:0 auto; padding:0 28px; }
+    section { padding: 90px 0; }
+    .sec-sep { height: 1px; background: var(--line-s); }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      font-family: 'Barlow', sans-serif;
+      font-size: .88rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease, color .22s ease;
+      text-decoration: none;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      will-change: transform;
+    }
+
+    .btn-primary {
+      background: var(--btn);
+      color: var(--text);
+      border: 1px solid var(--btn);
+    }
+    .btn-primary:hover {
+      background: var(--btn-h);
+      border-color: var(--btn-h);
+      transform: translateY(-2px) translateZ(0);
+      box-shadow: 0 6px 24px rgba(123,14,14,.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line-s);
+    }
+    .btn-outline:hover {
+      border-color: var(--br-m);
+      color: var(--text);
+      transform: translateY(-2px) translateZ(0);
+    }
+
+    /* ── NAVIGATION ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: padding .35s ease, background .35s ease, border-color .35s ease;
+    }
+    .nav.scrolled {
+      padding: 12px 0;
+      background: rgba(10,10,9,.97);
+      border-bottom: 1px solid var(--line-s);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo em { color: var(--br-l); font-style: normal; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      transition: all .3s;
+    }
+
+    /* Mobile menu */
+    .mob-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg2);
+      z-index: 998;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+    .mob-menu.open { display: flex; }
+    .mob-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+    .mob-menu a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--text);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .mob-menu a:hover { color: var(--br-l); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    /* Subtle dot grid pattern */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(90,42,14,.18) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    /* Dark brown gradient wash */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 80% 50%, rgba(61,28,8,.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Vertical accent line on left */
+    .hero-line {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, transparent 10%, var(--br-m) 40%, var(--br-m) 60%, transparent 90%);
+    }
+
+    .hero-body {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .hero-num {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--br-l);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: fadeUp .7s ease .15s forwards;
+      will-change: opacity, transform;
+    }
+
+    .hero-h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -.01em;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+      min-height: 2.1em;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      height: .85em;
+      background: var(--br-l);
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: blink .9s ease-in-out infinite;
+      will-change: opacity;
+    }
+    .cursor.off { opacity: 0; animation: none; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .hero-p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-weight: 400;
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 2.4rem;
+      opacity: 0;
+      animation: fadeUp .7s ease .4s forwards;
+      will-change: opacity, transform;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .7s ease .58s forwards;
+      will-change: opacity, transform;
+    }
+
+    .hero-scroll-ind {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeIn .8s ease 2s forwards;
+    }
+    .hero-scroll-ind span {
+      font-size: .6rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+    .scroll-bar {
+      width: 1px;
+      height: 38px;
+      position: relative;
+      overflow: hidden;
+    }
+    .scroll-bar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, var(--br-l), transparent);
+      transform: translateY(-100%);
+      animation: scrollAnim 2s ease-in-out infinite;
+      will-change: transform;
+    }
+    @keyframes scrollAnim {
+      0%   { transform: translateY(-100%); }
+      50%  { transform: translateY(0%); }
+      100% { transform: translateY(100%); }
+    }
+
+    /* ── STATS ── */
+    .stats {
+      padding: 0;
+      background: var(--bg2);
+      border-top: 1px solid var(--line-s);
+      border-bottom: 1px solid var(--line-s);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat {
+      padding: 40px 28px;
+      position: relative;
+      text-align: center;
+    }
+    .stat:not(:last-child) {
+      border-right: 1px solid var(--line-s);
+    }
+    .stat-n {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -.01em;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .stat-l {
+      font-size: .78rem;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--bg); }
+
+    .sec-header { margin-bottom: 3rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line-s);
+      border: 1px solid var(--line-s);
+    }
+
+    .svc-card {
+      background: var(--bg2);
+      padding: 40px 36px;
+      transition: background .25s ease;
+      position: relative;
+    }
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--br);
+      transition: background .25s ease;
+    }
+    .svc-card:hover { background: var(--bg3); }
+    .svc-card:hover::before { background: var(--br-l); }
+
+    .svc-num {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--br-l);
+      margin-bottom: 20px;
+    }
+    .svc-icon {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      background: rgba(61,28,8,.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .svc-icon svg {
+      width: 20px; height: 20px;
+      stroke: var(--br-l);
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .svc-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .svc-desc {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.68;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+    .svc-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--br-l);
+      text-decoration: none;
+      transition: gap .2s ease;
+    }
+    .svc-more:hover { gap: 12px; }
+
+    /* ── WHY US ── */
+    .why { background: var(--bg2); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .why-sticky { position: sticky; top: 100px; }
+
+    .why-items { display: flex; flex-direction: column; gap: 0; }
+    .why-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line-s);
+      transition: background .2s;
+    }
+    .why-item:first-child { border-top: 1px solid var(--line-s); }
+
+    .why-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--br);
+      line-height: 1;
+      min-width: 36px;
+      padding-top: 3px;
+    }
+    .why-txt h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      margin-bottom: 5px;
+    }
+    .why-txt p {
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--bg); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line-s);
+      border: 1px solid var(--line-s);
+      margin-bottom: 24px;
+    }
+
+    .price-card {
+      background: var(--bg2);
+      padding: 36px 30px;
+      position: relative;
+      transition: background .25s;
+    }
+    .price-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--br);
+    }
+    .price-card.feat {
+      background: var(--bg3);
+    }
+    .price-card.feat::before { background: var(--br-l); }
+    .price-card:hover { background: var(--bg3); }
+
+    .feat-tag {
+      display: inline-block;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--br-l);
+      border: 1px solid var(--br);
+      padding: 3px 10px;
+      margin-bottom: 18px;
+    }
+
+    .price-tier {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--br-l);
+      margin-bottom: 8px;
+    }
+    .price-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .price-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .price-note {
+      font-size: .78rem;
+      color: var(--faint);
+      margin-bottom: 22px;
+    }
+    .price-divider { height: 1px; background: var(--line-s); margin-bottom: 20px; }
+
+    .price-feats {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 28px;
+    }
+    .price-feats li {
+      display: flex;
+      align-items: baseline;
+      gap: 9px;
+      font-size: .86rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .price-feats li::before {
+      content: '—';
+      color: var(--br-m);
+      font-weight: 700;
+      flex-shrink: 0;
+      font-size: .75rem;
+    }
+
+    .price-cta {
+      display: block;
+      text-align: center;
+      padding: 12px 16px;
+      font-family: 'Barlow', sans-serif;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, border-color .2s, color .2s, transform .2s ease;
+      will-change: transform;
+    }
+    .cta-out {
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .cta-out:hover {
+      border-color: var(--br-m);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+    .cta-fill {
+      background: var(--btn);
+      border: 1px solid var(--btn);
+      color: var(--text);
+    }
+    .cta-fill:hover {
+      background: var(--btn-h);
+      border-color: var(--btn-h);
+      transform: translateY(-1px);
+    }
+
+    .pricing-note {
+      padding: 18px 22px;
+      border: 1px solid var(--line-s);
+      border-left: 3px solid var(--br-m);
+      font-size: .86rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .pricing-note strong { color: var(--text); font-weight: 600; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--bg2); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .c-form {
+      background: var(--bg3);
+      border: 1px solid var(--line-s);
+      border-top: 2px solid var(--br-m);
+      padding: 44px 40px;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fg { margin-bottom: 16px; }
+    .fg label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 7px;
+    }
+    .fg input, .fg textarea {
+      width: 100%;
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--line-s);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-size: .92rem;
+      padding: 11px 14px;
+      transition: border-color .25s, background .25s, box-shadow .25s;
+      outline: none;
+    }
+    .fg input::placeholder, .fg textarea::placeholder { color: var(--faint); }
+    .fg input:focus, .fg textarea:focus {
+      border-color: var(--br-m);
+      background: rgba(61,28,8,.06);
+      box-shadow: 0 0 0 3px rgba(90,42,14,.12);
+    }
+    .fg textarea { resize: vertical; min-height: 110px; }
+
+    .f-check {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .f-check input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      margin-top: 2px;
+      accent-color: var(--br-m);
+    }
+    .f-check label { font-size: .78rem; color: var(--faint); line-height: 1.5; }
+    .f-check label a { color: var(--br-l); text-decoration: none; }
+
+    .f-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--btn);
+      color: var(--text);
+      border: 1px solid var(--btn);
+      font-family: 'Barlow', sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .25s, border-color .25s, transform .22s ease, box-shadow .22s ease;
+      will-change: transform;
+      position: relative;
+      overflow: hidden;
+    }
+    .f-submit::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.07), transparent);
+      transform: translateX(-250%);
+      animation: shimmer 3.5s ease-in-out infinite;
+      will-change: transform;
+    }
+    @keyframes shimmer { 0%{transform:translateX(-250%)} 50%,100%{transform:translateX(400%)} }
+    .f-submit:hover {
+      background: var(--btn-h);
+      border-color: var(--btn-h);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 18px rgba(90,42,14,.3);
+    }
+
+    /* Contact info side */
+    .c-info { padding-top: 8px; }
+    .c-info-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      margin-bottom: 8px;
+    }
+    .c-info-sub {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .c-detail {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line-s);
+    }
+    .c-detail:first-of-type { border-top: 1px solid var(--line-s); }
+    .c-ico {
+      width: 38px; height: 38px; min-width: 38px;
+      border: 1px solid var(--line);
+      background: rgba(61,28,8,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .c-ico svg {
+      width: 16px; height: 16px;
+      stroke: var(--br-l); fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .c-detail-txt strong {
+      display: block;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+    .c-detail-txt a, .c-detail-txt span {
+      color: var(--text);
+      font-size: .95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .c-detail-txt a:hover { color: var(--br-l); }
+
+    .c-promise {
+      margin-top: 28px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--br-m);
+      background: rgba(61,28,8,.1);
+      font-size: .84rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--line-s);
+      padding: 56px 0 28px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 56px;
+      margin-bottom: 40px;
+    }
+    .f-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 14px;
+    }
+    .f-logo em { color: var(--br-l); font-style: normal; }
+    .f-desc {
+      font-size: .84rem;
+      color: var(--faint);
+      line-height: 1.72;
+      margin-bottom: 22px;
+    }
+
+    .socials { display: flex; gap: 8px; }
+    .soc {
+      width: 32px; height: 32px;
+      background: var(--bg3);
+      border: 1px solid var(--line-s);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: border-color .2s, background .2s;
+    }
+    .soc:hover { border-color: var(--br-m); background: rgba(61,28,8,.2); }
+    .soc svg {
+      width: 14px; height: 14px;
+      stroke: var(--faint); fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke .2s;
+    }
+    .soc:hover svg { stroke: var(--br-l); }
+
+    .f-heading {
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .f-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .f-links a {
+      color: var(--faint);
+      text-decoration: none;
+      font-size: .86rem;
+      transition: color .2s;
+    }
+    .f-links a:hover { color: var(--muted); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--line-s);
+    }
+    .f-copy { font-size: .76rem; color: var(--faint); }
+    .f-legal { display: flex; gap: 20px; }
+    .f-legal a { font-size: .76rem; color: var(--faint); text-decoration: none; transition: color .2s; }
+    .f-legal a:hover { color: var(--muted); }
+
+    /* ── SCROLL REVEAL ── */
+    .rv {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+      will-change: opacity, transform;
+    }
+    .rv.vis { opacity: 1; transform: translateY(0); will-change: auto; }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+    .d4 { transition-delay: .4s; }
+
+    /* ── CENTER HEADER ── */
+    .ch { text-align: center; }
+    .ch .sec-sub { margin: 0 auto 3rem; }
+    .ch .eyebrow { justify-content: center; }
+    .ch .eyebrow::before { display: none; }
+
+    /* ── UTILS ── */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .why-grid { grid-template-columns: 1fr; gap: 36px; }
+      .why-sticky { position: static; }
+      .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 70px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-burger { display: flex; }
+
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .stat:nth-child(2) { border-right: none; }
+      .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line-s); }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .c-form { padding: 28px 22px; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .hero-cta { flex-direction: column; align-items: flex-start; }
+      .hero-scroll-ind { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-h1 { font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMob()" aria-label="Zavřít">✕</button>
+  <a href="#sluzby" onclick="closeMob()">Služby</a>
+  <a href="#proc-my" onclick="closeMob()">Proč my</a>
+  <a href="#cenik" onclick="closeMob()">Ceník</a>
+  <a href="#kontakt" onclick="closeMob()">Kontakt</a>
+  <a href="#kontakt" class="btn btn-primary" style="margin-top:8px" onclick="closeMob()">Poptávka</a>
+</div>
+
+<!-- NAVIGATION -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Klim<em>Zone</em></a>
+      <nav aria-label="Hlavní navigace">
+        <ul class="nav-links">
+          <li><a href="#sluzby">Služby</a></li>
+          <li><a href="#proc-my">Proč my</a></li>
+          <li><a href="#cenik">Ceník</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <a href="#kontakt" class="btn btn-primary nav-cta">Nezávazná poptávka</a>
+        <button class="nav-burger" onclick="openMob()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="uvod">
+  <div class="hero-line"></div>
+  <div class="wrap">
+    <div class="hero-body">
+      <span class="hero-num">Prodej · Montáž · Servis</span>
+      <h1 class="hero-h1">
+        <span id="tw"></span><span class="cursor" id="cur"></span>
+      </h1>
+      <p class="hero-p">Klimatizace na klíč – rychle, spolehlivě, bez starostí. Reagujeme do 2 hodin, montáž do 48 hodin.</p>
+      <div class="hero-cta">
+        <a href="#kontakt" class="btn btn-primary">Chci poptávku →</a>
+        <a href="#sluzby" class="btn btn-outline">Naše služby</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-ind">
+    <div class="scroll-bar"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats" id="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat rv">
+        <div class="stat-n" data-target="150" data-suffix="+">0</div>
+        <div class="stat-l">Spokojených zákazníků</div>
+      </div>
+      <div class="stat rv d1">
+        <div class="stat-n" data-target="5" data-suffix="+">0</div>
+        <div class="stat-l">Let zkušeností</div>
+      </div>
+      <div class="stat rv d2">
+        <div class="stat-n" data-target="48" data-suffix="h">0h</div>
+        <div class="stat-l">Průměrná montáž</div>
+      </div>
+      <div class="stat rv d3">
+        <div class="stat-n" data-target="100" data-suffix="%">0%</div>
+        <div class="stat-l">Záruční servis</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="sluzby">
+  <div class="wrap">
+    <div class="sec-header rv">
+      <div class="eyebrow">Naše služby</div>
+      <h2 class="sec-title rv d1">Vše pod jednou střechou</h2>
+      <p class="sec-sub rv d2">Od výběru správného zařízení přes instalaci až po dlouhodobý servis.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card rv">
+        <span class="svc-num">01</span>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <h3 class="svc-title">Prodej klimatizací</h3>
+        <p class="svc-desc">Nabízíme klimatizace od předních světových značek. Poradíme s výběrem optimální jednotky pro váš prostor a rozpočet.</p>
+        <a href="#kontakt" class="svc-more">Zjistit více →</a>
+      </div>
+      <div class="svc-card rv d1">
+        <span class="svc-num">02</span>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3 class="svc-title">Profesionální montáž</h3>
+        <p class="svc-desc">Instalace na klíč – rychle, čistě, bez komplikací. Montáž zvládáme do 48 hodin od objednávky.</p>
+        <a href="#kontakt" class="svc-more">Zjistit více →</a>
+      </div>
+      <div class="svc-card rv d2">
+        <span class="svc-num">03</span>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <h3 class="svc-title">Servis a údržba</h3>
+        <p class="svc-desc">Pravidelná údržba, čištění a záruční i pozáruční opravy. Váš komfort je naší prioritou.</p>
+        <a href="#kontakt" class="svc-more">Zjistit více →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-sep"></div>
+
+<!-- WHY US -->
+<section class="why" id="proc-my">
+  <div class="wrap">
+    <div class="why-grid">
+      <div class="why-sticky">
+        <div class="eyebrow rv">Proč KlimZone</div>
+        <h2 class="sec-title rv d1">Klimatizace<br>bez kompromisů</h2>
+        <p class="sec-sub rv d2" style="margin-bottom:0">Vyberte si partnera, na kterého se můžete spolehnout – od prvního hovoru až po roky bezporuchového provozu.</p>
+      </div>
+      <div class="why-items">
+        <div class="why-item rv">
+          <div class="why-num">01</div>
+          <div class="why-txt">
+            <h3>Rychlá reakce a montáž</h3>
+            <p>Odpovídáme do 2 hodin. Montáž zvládáme do 48 hodin – protože váš komfort nesnese zbytečné čekání. <em style="color:var(--faint)">[Doplňte konkrétní detail]</em></p>
+          </div>
+        </div>
+        <div class="why-item rv d1">
+          <div class="why-num">02</div>
+          <div class="why-txt">
+            <h3>Záruka a spolehlivost</h3>
+            <p>Záruční servis přednostně, záruky nad rámec zákonné povinnosti. Stojíme za každou instalací. <em style="color:var(--faint)">[Doplňte konkrétní detail]</em></p>
+          </div>
+        </div>
+        <div class="why-item rv d2">
+          <div class="why-num">03</div>
+          <div class="why-txt">
+            <h3>Zkušenosti a certifikace</h3>
+            <p>5+ let v oboru, certifikovaní technici, přednostní práce s renomovanými značkami. Víme, co funguje. <em style="color:var(--faint)">[Doplňte certifikáty]</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-sep"></div>
+
+<!-- PRICING -->
+<section class="pricing" id="cenik">
+  <div class="wrap">
+    <div class="ch">
+      <div class="eyebrow rv">Orientační ceník</div>
+      <h2 class="sec-title rv d1">Transparentní ceny</h2>
+      <p class="sec-sub rv d2">Žádné skryté poplatky. Přesnou cenu dostanete zdarma a bez závazků.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card rv">
+        <div class="price-tier">Základní</div>
+        <div class="price-name">Základ</div>
+        <div class="price-val">od 15 900 Kč</div>
+        <div class="price-note">Montáž + jednotka v ceně</div>
+        <div class="price-divider"></div>
+        <ul class="price-feats">
+          <li>Split klimatizace 2,5 kW</li>
+          <li>Standardní montáž (do 5 m)</li>
+          <li>2 roky záruky</li>
+          <li>Telefonická podpora</li>
+          <li>Uvedení do provozu</li>
+        </ul>
+        <a href="#kontakt" class="price-cta cta-out">Poptávka zdarma</a>
+      </div>
+      <div class="price-card feat rv d1">
+        <div class="feat-tag">Nejoblíbenější</div>
+        <div class="price-tier">Komfort</div>
+        <div class="price-name">Komfort</div>
+        <div class="price-val">od 24 900 Kč</div>
+        <div class="price-note">Montáž + jednotka v ceně</div>
+        <div class="price-divider"></div>
+        <ul class="price-feats">
+          <li>Split klimatizace 3,5 kW</li>
+          <li>Nadstandardní montáž (do 10 m)</li>
+          <li>3 roky záruky</li>
+          <li>Prioritní servis</li>
+          <li>1× roční prohlídka</li>
+          <li>Kompletní uvedení do provozu</li>
+        </ul>
+        <a href="#kontakt" class="price-cta cta-fill">Chci Komfort</a>
+      </div>
+      <div class="price-card rv d2">
+        <div class="price-tier">Premium</div>
+        <div class="price-name">Premium</div>
+        <div class="price-val">Na míru</div>
+        <div class="price-note">Individuální nabídka</div>
+        <div class="price-divider"></div>
+        <ul class="price-feats">
+          <li>Multi-split / VRF systémy</li>
+          <li>Individuální projekt a návrh</li>
+          <li>5 let záruky</li>
+          <li>VIP servisní smlouva</li>
+          <li>Pravidelná péče</li>
+          <li>Prioritní výjezd 24/7</li>
+        </ul>
+        <a href="#kontakt" class="price-cta cta-out">Konzultace zdarma</a>
+      </div>
+    </div>
+    <div class="pricing-note rv">
+      <strong>Cena závisí na konkrétní situaci</strong> – délce trubkové trasy, složitosti montáže a výkonu jednotky. Poptejte nás a dostanete přesnou nabídku <strong>zdarma a bez závazků</strong>.
+    </div>
+  </div>
+</section>
+
+<div class="sec-sep"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="kontakt">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="eyebrow rv">Kontaktujte nás</div>
+        <h2 class="sec-title rv d1">Poptejte<br>nezávazně</h2>
+        <p class="sec-sub rv d2" style="margin-bottom:2rem">Vyplňte formulář a ozveme se do 2 pracovních hodin s odpovědí a orientační cenou.</p>
+        <form class="c-form rv d2" id="cForm" action="https://formspree.io/f/XXXXXXXX" method="POST">
+          <div class="form-row">
+            <div class="fg">
+              <label for="name">Jméno a příjmení *</label>
+              <input type="text" id="name" name="name" placeholder="Jan Novák" required>
+            </div>
+            <div class="fg">
+              <label for="phone">Telefon *</label>
+              <input type="tel" id="phone" name="phone" placeholder="+420 777 123 456" required>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="jan.novak@email.cz">
+          </div>
+          <div class="fg">
+            <label for="msg">Zpráva</label>
+            <textarea id="msg" name="message" placeholder="Poptávka klimatizace – typ prostoru, plocha, počet místností…"></textarea>
+          </div>
+          <div class="f-check">
+            <input type="checkbox" id="gdpr" name="gdpr" required>
+            <label for="gdpr">Souhlasím se zpracováním osobních údajů dle <a href="#">zásad ochrany osobních údajů</a>.</label>
+          </div>
+          <button type="submit" class="f-submit" id="fBtn">Odeslat poptávku →</button>
+        </form>
+      </div>
+
+      <div class="c-info rv d1">
+        <div class="c-info-title">Jsme tu pro vás</div>
+        <p class="c-info-sub">Praha a Středočeský kraj. Na poptávku reagujeme do 2 hodin v pracovní dny.</p>
+
+        <div class="c-detail">
+          <div class="c-ico">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.36 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="c-detail-txt">
+            <strong>Telefon</strong>
+            <a href="tel:+420XXXXXXXXX">+420 XXX XXX XXX</a>
+          </div>
+        </div>
+        <div class="c-detail">
+          <div class="c-ico">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="c-detail-txt">
+            <strong>E-mail</strong>
+            <a href="mailto:info@klimzone.cz">info@klimzone.cz</a>
+          </div>
+        </div>
+        <div class="c-detail">
+          <div class="c-ico">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"/></svg>
+          </div>
+          <div class="c-detail-txt">
+            <strong>Oblast</strong>
+            <span>Praha a Středočeský kraj</span>
+          </div>
+        </div>
+
+        <div class="c-promise">
+          „Každá poptávka dostane odpověď do 2 pracovních hodin. Konzultace i výjezd na prohlídku je zdarma."
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="#" class="f-logo">Klim<em>Zone</em></a>
+        <p class="f-desc">Profesionální prodej, montáž a servis klimatizací. Od první konzultace přes instalaci až po dlouhodobý servis.</p>
+        <div class="socials">
+          <a href="#" class="soc" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="soc" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="soc" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="f-heading">Navigace</div>
+        <ul class="f-links">
+          <li><a href="#sluzby">Služby</a></li>
+          <li><a href="#proc-my">Proč KlimZone</a></li>
+          <li><a href="#cenik">Ceník</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-heading">Kontakt</div>
+        <ul class="f-links">
+          <li><a href="tel:+420XXXXXXXXX">+420 XXX XXX XXX</a></li>
+          <li><a href="mailto:info@klimzone.cz">info@klimzone.cz</a></li>
+          <li><a href="#">Praha a Středočeský kraj</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="f-copy">&copy; 2025 KlimZone. Všechna práva vyhrazena.</div>
+      <div class="f-legal">
+        <a href="#">Ochrana osobních údajů</a>
+        <a href="#">Obchodní podmínky</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  // Nav scroll
+  const navEl = document.getElementById('nav');
+  window.addEventListener('scroll', () => navEl.classList.toggle('scrolled', scrollY > 40), {passive:true});
+
+  // Mobile menu
+  function openMob() { document.getElementById('mobMenu').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMob() { document.getElementById('mobMenu').classList.remove('open'); document.body.style.overflow=''; }
+
+  // Typewriter
+  const twText = 'Klimatizace, které fungují. Přesně tam, kde je potřebujete.';
+  const twEl = document.getElementById('tw');
+  const curEl = document.getElementById('cur');
+  let ti = 0;
+  function type() {
+    if (ti < twText.length) {
+      twEl.textContent += twText[ti++];
+      setTimeout(type, ti < 20 ? 60 : 42);
+    } else {
+      setTimeout(() => curEl.classList.add('off'), 1600);
+    }
+  }
+  setTimeout(type, 600);
+
+  // Scroll reveal
+  const rvObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); rvObs.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin:'0px 0px -32px 0px' });
+  document.querySelectorAll('.rv').forEach(el => rvObs.observe(el));
+
+  // Counter
+  function countUp(el) {
+    const target = +el.dataset.target, suffix = el.dataset.suffix||'', dur = 1800, t0 = performance.now();
+    const run = now => {
+      const p = Math.min((now-t0)/dur,1), ep = 1-Math.pow(1-p,3);
+      el.textContent = Math.floor(ep*target)+suffix;
+      if (p<1) requestAnimationFrame(run);
+    };
+    requestAnimationFrame(run);
+  }
+  let counted = false;
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting && !counted) { counted=true; document.querySelectorAll('.stat-n').forEach(countUp); }
+  }, {threshold:.3}).observe(document.getElementById('stats'));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+    });
+  });
+
+  // Form
+  const form = document.getElementById('cForm'), fBtn = document.getElementById('fBtn');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const orig = fBtn.innerHTML;
+    fBtn.textContent = 'Odesílám…'; fBtn.disabled = true;
+    try {
+      const r = await fetch(form.action, {method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}});
+      if (r.ok) {
+        fBtn.textContent = '✓ Poptávka odeslána!';
+        fBtn.style.background = '#1a3d24';
+        form.reset();
+        setTimeout(() => { fBtn.innerHTML=orig; fBtn.style.background=''; fBtn.disabled=false; }, 4000);
+      } else throw 0;
+    } catch {
+      fBtn.textContent = 'Chyba – zkuste znovu';
+      fBtn.style.background = '#3d1a1a';
+      setTimeout(() => { fBtn.innerHTML=orig; fBtn.style.background=''; fBtn.disabled=false; }, 3000);
+    }
+  });
+</script>
+</body>
+</html>
